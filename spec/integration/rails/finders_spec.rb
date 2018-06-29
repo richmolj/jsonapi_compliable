@@ -32,7 +32,11 @@ if ENV['APPRAISAL_INITIALIZED']
     let!(:hobby1)  { Legacy::Hobby.create!(name: 'Fishing', authors: [author1]) }
     let!(:hobby2)  { Legacy::Hobby.create!(name: 'Woodworking', authors: [author1, author2]) }
     let!(:house)   { Legacy::House.new(name: 'Cozy', state: state) }
+<<<<<<< HEAD
     let!(:condo)   { Legacy::Condo.new(name: 'Modern') }
+=======
+    let!(:condo)   { Legacy::Condo.new(name: 'Modern', state: state) }
+>>>>>>> Add polymorphic_belongs_to
 
     def ids_for(type)
       json_includes(type).map { |i| i['id'].to_i }
@@ -440,7 +444,10 @@ if ENV['APPRAISAL_INITIALIZED']
         expect(condo).to_not have_key('name')
       end
 
+<<<<<<< HEAD
       # NB: Condo does NOT have a state relationship
+=======
+>>>>>>> Add polymorphic_belongs_to
       it 'allows additional levels of nesting' do
         get :index, params: { include: 'dwelling.state' }
         expect(json_includes('states').length).to eq(1)

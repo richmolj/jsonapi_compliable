@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   create_table :condos do |t|
+    t.integer :state_id
     t.string :name
   end
 
@@ -99,6 +100,7 @@ module Legacy
 
   class Condo < ApplicationRecord
     has_many :authors, as: :dwelling
+    belongs_to :state
   end
 
   class House < ApplicationRecord
@@ -235,6 +237,8 @@ module Legacy
     extra_attribute :condo_price, :integer do
       500_000
     end
+
+    belongs_to :state
   end
 
   class OrganizationResource < ApplicationResource
