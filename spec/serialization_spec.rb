@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe 'serialization' do
-  include JsonHelpers
   include_context 'resource testing'
   let(:resource) do
     Class.new(PORO::ApplicationResource) do
@@ -11,7 +10,6 @@ RSpec.describe 'serialization' do
       end
     end
   end
-  let(:base_scope) { { type: :employees } }
 
   let(:attributes) { json['data'][0]['attributes'] }
 
